@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+
+.venv/
+venv/
+myenv/
+
+*.log
+
+twcs.csv
+amazon_support.csv
+amazon_customers.csv
+amazon_labeled.csv
+amazon_labeled_v2.csv
+amazon_balanced.csv
+train.csv
+test.csv
