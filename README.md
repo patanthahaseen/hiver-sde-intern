@@ -168,8 +168,6 @@ The confusion matrix is saved as:
 
 \## Support Agent
 
-
-
 The support agent combines the trained classifier with response templates.
 
 
@@ -196,9 +194,27 @@ Predicted intent:
 
 The agent then generates a delivery-specific support response.
 
-
-
 The agent also provides a confidence score.
+
+If confidence is below the configured threshold, the system asks the customer for more information instead of providing a potentially incorrect intent-specific response.
+
+## Historical Response Retrieval
+
+The project also uses historical AmazonHelp customer-support conversations to find similar past customer messages.
+
+A TF-IDF based retrieval system searches the historical conversations and calculates a similarity score for the closest match.
+
+The retrieved response is used as a reference signal rather than being copied directly. This avoids returning responses containing unrelated usernames, links, or conversation-specific information.
+
+The retrieval system helps the agent identify whether a customer's message is similar to previously handled AmazonHelp issues.
+
+For example, a customer message such as:
+
+> My package says delivered but I haven't received it.
+
+can be matched with a similar historical AmazonHelp conversation.
+
+The system reports the historical similarity score along with the predicted intent and classifier confidence.
 
 
 
@@ -207,8 +223,6 @@ If confidence is below the configured threshold, the system asks the customer fo
 
 
 \## Project Structure
-
-
 
 ```text
 
@@ -245,6 +259,9 @@ hiver-sde-intern/
 ├── support\_agent.py
 
 ├── evaluate\_model.py
+├── create_response_data.py
+├── response_retriever.py
+├── test_retriever.py
 
 │
 
