@@ -16,3 +16,5 @@ amazon_balanced.csv
 train.csv
 test.csv
 amazon_response_pairs.csv
+response_vectorizer.pkl
+response_retriever.pkl
