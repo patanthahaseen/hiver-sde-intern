@@ -217,6 +217,40 @@ can be matched with a similar historical AmazonHelp conversation.
 The system reports the historical similarity score along with the predicted intent and classifier confidence.
 
 
+## Evaluation & Demo Results
+
+The intent classifier was evaluated on a held-out test set of 1,600 customer messages.
+
+Accuracy: 86.19%
+
+All 8 supported intents were manually tested using representative customer messages.
+
+The agent successfully demonstrated:
+- Intent classification
+- Confidence scoring
+- Historical response similarity
+- Intent-specific support responses
+- Low-confidence fallback behavior
+
+Example:
+
+> My package says delivered but I haven't received it.
+
+Detected intent: `delivery_issue`  
+Confidence: 0.58  
+Historical similarity: 0.70
+
+The agent generated a delivery-specific support response instead of directly copying the historical response.
+
+A low-confidence example was also tested:
+
+> help
+
+Confidence: 0.19
+
+The agent correctly requested additional information instead of providing an uncertain intent-specific response.
+
+
 
 If confidence is below the configured threshold, the system asks the customer for more information instead of providing a potentially incorrect intent-specific response.
 
