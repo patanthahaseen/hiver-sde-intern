@@ -38,7 +38,7 @@ def support_agent(message):
             "Could you please provide a little more detail so I can help you?"
         )
 
-        return intent, confidence, response
+        return intent, confidence, 0.0, response
 
     # -----------------------------
     # 3. Find similar historical conversation
@@ -54,7 +54,7 @@ def support_agent(message):
     # -----------------------------
     response = generate_response(intent)
 
-    return intent, confidence, response
+    return intent, confidence, similarity, response
 
 
 print("AmazonHelp Support Agent")
@@ -67,8 +67,9 @@ while True:
         print("Goodbye!")
         break
 
-    intent, confidence, response = support_agent(message)
+    intent, confidence, similarity, response = support_agent(message)
 
     print("Detected intent:", intent)
     print("Confidence:", round(confidence, 2))
+    print("Historical similarity:", round(similarity, 2))
     print("Support response:", response)

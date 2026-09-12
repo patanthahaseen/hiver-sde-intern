@@ -20,9 +20,9 @@ while True:
         print("Please enter a customer message.")
         continue
 
-    intent, confidence, response = support_agent(message)
-
+    intent, confidence, similarity, response = support_agent(message)
     print("\nDetected Intent:", intent)
     print("Confidence:", round(confidence, 2))
+    print("Historical similarity:", round(similarity, 2))
     print("Support Response:", response)
     print()
